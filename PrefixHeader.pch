@@ -1,0 +1,33 @@
+//
+//  PrefixHeader.pch
+//  XMPP_TEST_LFZ1
+//
+//  Created by 郎凤招 on 16/5/30.
+//  Copyright © 2016年 Lang.FZ. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import "MJExtension.h"
+#import "AFNetworking.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+
+#define APPKEY @"lfz12626#lfz1"     //我的应用
+#define UserName @"test1"       //应用里的用户名
+#define PassWord @"test"        //用户名密码
+#define GroupId @"202293156450927028"       //群ID
+
+#define kScreenW [UIScreen mainScreen].bounds.size.width
+#define kScreenH [UIScreen mainScreen].bounds.size.height
+
+#endif /* PrefixHeader_pch */
+/*
+ 
+    方向bug 缩小后不在bounds内bug 输入框慢bug 
+ 
+    弹幕   ui
+ 
+ */
