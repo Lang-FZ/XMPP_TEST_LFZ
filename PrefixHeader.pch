@@ -24,10 +24,3 @@
 #define kScreenH [UIScreen mainScreen].bounds.size.height
 
 #endif /* PrefixHeader_pch */
-/*
- 
-    方向bug 缩小后不在bounds内bug 输入框慢bug 
- 
-    弹幕   ui
- 
- */
