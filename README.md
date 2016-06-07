@@ -1,6 +1,6 @@
 # XMPP_TEST_LFZ
 
-#找工作，实习岗也请骚扰我:smiley:
+#找工作，请骚扰我:smiley:
 
 # 仿写了战旗TV的部分功能
 
