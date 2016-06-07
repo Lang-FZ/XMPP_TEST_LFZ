@@ -145,6 +145,13 @@ static NSString *roomCell = @"cell";
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     textField.text = @"发个弹幕呗";
+    _botTextfieldView.frame = CGRectMake(0, kScreenH - 49, kScreenW, 49);
+    
+    _botTextfieldView.textView.frame = CGRectMake(2, 2, kScreenW - 4, 45);
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [_botTextfieldView.textView layoutIfNeeded];
+    }];
 }
 
 //发送群消息
@@ -183,7 +190,10 @@ static NSString *roomCell = @"cell";
     _botTextfieldView.frame = CGRectMake(0, kScreenH - 49, kScreenW, 49);
     
     _botTextfieldView.textView.frame = CGRectMake(2, 2, kScreenW - 4, 45);
-
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [_botTextfieldView.textView layoutIfNeeded];
+    }];
 }
 
 - (void)keyboardHight:(NSNotification *)notification {
@@ -192,9 +202,14 @@ static NSString *roomCell = @"cell";
     
     int offset = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height;
     
-    [_botTextfieldView animateTextField:offset];
+    float duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
     _botTextfieldView.frame = CGRectMake(0, 0, kScreenW, kScreenH);
+    _botTextfieldView.textView.frame = CGRectMake(0, kScreenH - offset - 49, kScreenW, 49);
+    
+    [UIView animateWithDuration:duration animations:^{
+        [_botTextfieldView.textView layoutIfNeeded];
+    }];
     
 }
 

@@ -15,18 +15,6 @@
     [self.textView endEditing:YES];
 }
 
-- (void)animateTextField:(int)offset {
-    
-    [UIView beginAnimations:@"textfieldoffset" context:nil];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3];
-    
-    self.textView.frame = CGRectMake(0, kScreenH - offset - 49, kScreenW, 49);
-    
-    [UIView commitAnimations];
-    
-}
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

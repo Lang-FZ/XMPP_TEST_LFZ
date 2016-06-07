@@ -13,6 +13,4 @@
 
 @property (nonatomic, strong) UITextField *textView;
 
-- (void)animateTextField:(int)offset;
-
 @end
