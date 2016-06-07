@@ -200,7 +200,7 @@ static NSString *roomCell = @"cell";
 
     NSDictionary *info = [notification userInfo];
     
-    int offset = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size.height;
+    int offset = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
     
     float duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
