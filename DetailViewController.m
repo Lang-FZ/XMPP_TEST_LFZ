@@ -31,8 +31,6 @@ static NSString *roomCell = @"cell";
     
     _data = [[NSMutableArray alloc] init];
     
-//    [self creatPlayer];
-    
     [self creatXLVideoPlayer];
     
     [self creatTableView];
@@ -44,15 +42,6 @@ static NSString *roomCell = @"cell";
     [self creatBackButton];
     
     [self creatBarrage];
-    
-//    [self creatTopView];
-    
-//    [self creatBotView];
-    
-//    if (_videoSize) {
-//        _topView.alpha = 0;
-////        _botView.alpha = 0;
-//    }
 }
 
 - (void)setModel:(ItemModel *)model {
@@ -68,24 +57,10 @@ static NSString *roomCell = @"cell";
     [super viewDidAppear:animated];
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerReconnect) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
 }
-
-//- (void)playerReconnect {
-//
-//        [_myPlayer playPause];
-//        [_myPlayer playPause];
-////        AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@",VideoUrl,_model.videoId,VideoUrlNormal]]];
-////        [_playViewCV.player replaceCurrentItemWithPlayerItem:item];
-////        [_playViewCV.player play];
-//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -135,8 +110,6 @@ static NSString *roomCell = @"cell";
     [self.view addSubview:_botTextfieldView];
 }
 
-
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     
     textField.text = @"";
@@ -185,8 +158,6 @@ static NSString *roomCell = @"cell";
 
     NSDictionary *info = [notification userInfo];
     
-//    int offset = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-    
     _botTextfieldView.frame = CGRectMake(0, kScreenH - 49, kScreenW, 49);
     
     _botTextfieldView.textView.frame = CGRectMake(2, 2, kScreenW - 4, 45);
@@ -225,9 +196,12 @@ static NSString *roomCell = @"cell";
     //    NSLog(@"%@",roomList.occupants); //群组成员名
     
     //读取群组消息
-    NSArray *consts = [[EMClient sharedClient].chatManager getAllConversations];
     
-    EMConversation *con = consts[0];
+    EMConversation *con = [[EMClient sharedClient].chatManager getConversation:@"testConversation" type:EMConversationTypeGroupChat createIfNotExist:YES];
+    
+//    NSLog(@"%@",con);
+    
+//    EMConversation *con = consts[0];
     
     NSArray *allConMes = [con loadMoreMessagesFromId:nil limit:20 direction:EMMessageSearchDirectionUp];
     
@@ -241,7 +215,11 @@ static NSString *roomCell = @"cell";
         //        NSLog(@"\n%@\n%@ : %@\n%@",[NSDate dateWithTimeIntervalSince1970:(long)(obj.timestamp/1000 + 60*60*8)],obj.from,[obj.body valueForKey:@"text"],_data);
     }
     
-    [_myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_data.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (_data.count != 0) {
+        
+        [_myTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_data.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
     
     //发送群组消息
     /*
