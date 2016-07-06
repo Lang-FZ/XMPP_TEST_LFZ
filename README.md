@@ -10,6 +10,5 @@
 
 -播放器用的https://github.com/ShelinShelin/XLVideoPlayer
 
--用模拟器有BUG用真机没问题
 
 ![](https://github.com/Lang-FZ/XMPP_TEST_LFZ/blob/master/%E4%BB%BF%E5%86%99%E6%88%98%E6%97%97Demo.gif)
