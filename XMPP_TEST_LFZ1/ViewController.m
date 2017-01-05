@@ -34,6 +34,8 @@ static NSString *registerID = @"cell";
     
     [self dataInit];
     
+//    fdisndjahdsjk
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,7 +89,7 @@ static NSString *registerID = @"cell";
     
     _myCollectionVC.collectionView.backgroundColor = [UIColor whiteColor];
     
-    _myCollectionVC.collectionView.pagingEnabled = YES;
+//    _myCollectionVC.collectionView.pagingEnabled = YES;
     
     _myCollectionVC.collectionView.showsHorizontalScrollIndicator = NO;
     

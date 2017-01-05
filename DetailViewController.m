@@ -64,11 +64,15 @@ static NSString *roomCell = @"cell";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_myPlayer destroyPlayer];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     
+    [super viewDidDisappear:animated];
+    [_myPlayer destroyPlayer];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -156,7 +160,7 @@ static NSString *roomCell = @"cell";
 
 - (void)keyboardHidden:(NSNotification *)notification {
 
-    NSDictionary *info = [notification userInfo];
+//    NSDictionary *info = [notification userInfo];
     
     _botTextfieldView.frame = CGRectMake(0, kScreenH - 49, kScreenW, 49);
     
@@ -439,7 +443,7 @@ static NSString *roomCell = @"cell";
     BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
     descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
     descriptor.params[@"text"] = [NSString stringWithFormat:@"%@ : %@",from,text];
-    descriptor.params[@"textColor"] = [UIColor blackColor];
+    descriptor.params[@"textColor"] = [UIColor redColor];
     descriptor.params[@"speed"] = @50;
     //    descriptor.params[@"direction"] = @1;
     //    descriptor.params[@"clickAction"] = ^{
@@ -454,9 +458,9 @@ static NSString *roomCell = @"cell";
 
 #pragma - mark 最开始用AVPlayerViewController写的，横屏后变竖屏AVPlayerView的frameBUG改不掉  就在网上找了封装在view上的播放器 XLVideoPlayer
 
-//旋转屏幕
-//- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
-//{
+////旋转屏幕
+//- (void)interfaceOrientation:(UIInterfaceOrientation)orientation {
+//    
 //    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)])
 //    {
 //        SEL selector = NSSelectorFromString(@"setOrientation:");
